@@ -20,6 +20,8 @@ const [searchQuery, setSearchQuery] = useState('');
 const [filter, setFilter] = useState('address');
 
 const handleCurrentPageChange = (page) => {
+
+    setLoading(true);
     setCurrentPage(page);
 
     blocksApi.getBlocksBySearch(page, filter, searchQuery)
@@ -27,7 +29,10 @@ const handleCurrentPageChange = (page) => {
     setTotalPage(blocks.totalPage)
     setCurrentPage(blocks.page)
     setBlocks(blocks.transactions)})
-  .catch(error => toast.error(error.response.data.message, {autoClose: 5000}))
+  .catch(error => {
+    setSearchQuery('')
+    toast.error(error.response.data.message, {autoClose: 5000})
+})
   .finally(() => setLoading(false))
 }
 
@@ -54,7 +59,7 @@ useEffect(() => {
 const handleSearch = (search, searchQuery) => {
     setLoading(true);
 
-    blocksApi.getBlocksBySearch(currentPage, search, searchQuery)
+    blocksApi.getBlocksBySearch(1, search, searchQuery)
     .then(blocks => {
         setTotalPage(blocks.totalPage)
         setBlocks(blocks.transactions)
