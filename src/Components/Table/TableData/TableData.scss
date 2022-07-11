@@ -1,0 +1,14 @@
+
+
+tbody tr td {
+    font-size: 14px;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    padding: 3px 15px;
+
+    & a {
+        color: #3A80BA;
+    }
+}

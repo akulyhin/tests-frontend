@@ -1,0 +1,24 @@
+footer.Footer {
+    margin-top: 50px;
+    background: #1C3B55;
+}
+
+.LogoFooter {
+    font-size: 24px;
+}
+
+.FooterContent {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+
+    @media (max-width: 650px) {
+        flex-direction: column;
+
+        & :not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+}

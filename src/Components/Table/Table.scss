@@ -1,0 +1,40 @@
+table.table>:not(:first-child) {
+    border-top: none;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: #fff;
+    color: var(--bs-table-striped-color);
+}
+
+.table-striped>tbody>tr:nth-of-type(even)>* {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+}
+
+table.table {
+    border-color: #fff;
+}
+
+table.table thead {
+    background: #3A80BA;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    & th {
+        font-weight: 400;
+        vertical-align: middle;
+        padding: 5px 15px;
+    }
+
+    @media (max-width: 850px) {
+        & {
+            font-size: 12px;
+        }
+    }
+}
+
+.Loader {
+    text-align: center;
+    font-size: 20px;
+}
