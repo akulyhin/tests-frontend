@@ -1,6 +1,7 @@
 import Stack from '@mui/material/Stack';
 import { Wrapper, PaginationStyled } from './Pagination.styled';
 
+
 export default function PaginatitionBlocks({page, totalPage, handleCurrentPageChange, isMobile}) {
 
     const hangleChangePage = (_, pageNum) => {

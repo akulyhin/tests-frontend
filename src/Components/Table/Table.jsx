@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import blocksApi from '../../services';
 import Search from '../Search/Search';
 import PaginatitionBlocks from '../Paginations/Pagination';
+import LinearProgress from '@mui/material/LinearProgress';
 
 export default function GetTable() {
 
@@ -77,6 +78,7 @@ const isMobile = useMediaQuery({
     return (
         <>
         <Search filter={filter} searchQuery={searchQuery} handleFilterChange={handleFilterChange} handleSearchQuery={handleSearchQuery} handleSearch={handleSearch}/>
+        
         <Table striped bordered responsive>
             <thead>
                 <tr>
@@ -107,11 +109,13 @@ const isMobile = useMediaQuery({
                 </tr>
             </thead>
             <tbody>
-                {loading ? <tr><td colSpan={8} className="Loader">Loading...</td></tr> : blocks[0] ? <TableData data={blocks} /> : <tr><td colSpan={8} className="Loader">No data...</td></tr>}
+                {loading ?
+                 <tr><td colSpan={8} className="Loader"><LinearProgress/><br></br>Loading...</td></tr> :
+                  blocks[0] ? <TableData data={blocks} /> : <tr><td colSpan={8} className="Loader">No data...</td></tr>}
             </tbody>
         </Table>
 
-        {!loading && totalPage > 1 && <PaginatitionBlocks page={currentPage} isMobile={isMobile} totalPage={totalPage} handleCurrentPageChange={handleCurrentPageChange}  />}
+        {!loading && <PaginatitionBlocks page={currentPage} isMobile={isMobile} totalPage={totalPage} handleCurrentPageChange={handleCurrentPageChange}  />}
         </>
     )
 }
